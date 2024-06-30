@@ -4,4 +4,7 @@ import 'package:state_management/domain/entities/app_error.dart';
 
 abstract class MoviesRepository {
   Future<Either<AppError,List<MovieModel>>> getTrending();
+  Future<Either<AppError,List<MovieModel>>> getPopular();
+  Future<Either<AppError,List<MovieModel>>> getPlayingNow();
+  Future<Either<AppError,List<MovieModel>>> getComingSoon();
 }
