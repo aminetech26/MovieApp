@@ -1,9 +1,6 @@
 import 'dart:developer';
-
 import 'package:state_management/data/core/api_client.dart';
-import 'package:state_management/data/core/api_constants.dart';
 import 'package:state_management/data/models/movie_model.dart';
-import 'package:dio/dio.dart';
 import 'package:state_management/data/models/movies_result_model.dart';
 
 abstract class MovieRemoteDataSource {
