@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:state_management/data/data_sources/movie_remote_data_source.dart';
 import 'package:state_management/data/models/movie_model.dart';
@@ -11,6 +13,7 @@ class MoviesRepositoryImp extends MoviesRepository {
   Future<Either<AppError, List<MovieModel>>> getTrending() async {
     try {
       final movies = await remoteDataSource.getTrending();
+      log(movies.toString());
       return Right(movies);
     } on Exception {
       return const Left(AppError('Something went wrong'));

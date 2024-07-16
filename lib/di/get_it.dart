@@ -2,17 +2,22 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:state_management/data/core/api_client.dart';
 import 'package:state_management/data/data_sources/movie_remote_data_source.dart';
+import 'package:state_management/data/repositories/movies_repository_imp.dart';
+import 'package:state_management/domain/repositories/movies_repository.dart';
 import 'package:state_management/domain/usecases/get_coming_soon.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
+import 'package:state_management/presentation/blocs/bloc/movies_carousel_bloc.dart';
 
 final getItInstance = GetIt.I;
 
-Future init() async {
+Future initDependencies() async {
   getItInstance.registerLazySingleton<Dio>(() => Dio());
   getItInstance
       .registerLazySingleton<ApiClient>(() => ApiClient(getItInstance()));
+  getItInstance.registerLazySingleton<MoviesRepository>(
+      () => MoviesRepositoryImp(getItInstance()));
   getItInstance.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(getItInstance()));
   getItInstance
@@ -23,4 +28,6 @@ Future init() async {
       () => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<GetPlayingNow>(
       () => GetPlayingNow(getItInstance()));
+  getItInstance
+      .registerFactory(()=>MoviesCarouselBloc(getTrending: getItInstance()));
 }
