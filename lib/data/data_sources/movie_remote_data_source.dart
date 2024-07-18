@@ -25,7 +25,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getComingSoon() async {
     final response = await _apiClient.get('movie/upcoming');
     List<MovieModel> movies = MoviesResultModel.fromJson(response).results!;
-        log(movies.toString());
+    log(movies.toString());
 
     return movies;
   }
@@ -34,7 +34,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPlayingNow() async {
     final response = await _apiClient.get('movie/now_playing');
     List<MovieModel> movies = MoviesResultModel.fromJson(response).results!;
-        log(movies.toString());
+    log(movies.toString());
 
     return movies;
   }
@@ -43,7 +43,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPopular() async {
     final response = await _apiClient.get('movie/popular');
     List<MovieModel> movies = MoviesResultModel.fromJson(response).results!;
-        log(movies.toString());
+    log(movies.toString());
 
     return movies;
   }

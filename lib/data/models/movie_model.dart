@@ -24,6 +24,6 @@ class MovieModel extends MovieEntity with _$MovieModel {
     required final int? voteCount,
   }) = _MovieModel;
 
-  factory MovieModel.fromJson(Map<String, dynamic> json) => _$MovieModelFromJson(json);
-  
+  factory MovieModel.fromJson(Map<String, dynamic> json) =>
+      _$MovieModelFromJson(json);
 }
