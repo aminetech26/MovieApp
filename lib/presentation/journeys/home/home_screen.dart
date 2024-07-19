@@ -6,6 +6,8 @@ import 'package:state_management/presentation/blocs/bloc/movie_tabbed_bloc.dart'
 import 'package:state_management/presentation/blocs/bloc/movies_carousel_bloc.dart';
 import 'package:state_management/presentation/journeys/home/movie_carousel/movie_carousel_widget.dart';
 import 'package:state_management/presentation/journeys/movie_tabbed/movie_tab_widget.dart';
+import 'package:state_management/presentation/journeys/navigation_drawer.dart'
+    as nd;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -51,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       child: Scaffold(
+        drawer: const nd.NavigationDrawer(),
         body: BlocBuilder<MoviesCarouselBloc, MoviesCarouselState>(
           bloc: moviesCarouselBloc,
           builder: (context, state) {

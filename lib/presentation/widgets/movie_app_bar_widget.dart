@@ -13,15 +13,30 @@ class MovieAppBar extends StatelessWidget {
           top: MediaQuery.of(context).viewPadding.top + 4.h,
           left: 16.w,
           right: 16.w),
-          child: Row(children: [
-            IconButton(onPressed: (){
-
-            }, icon: SvgPicture.asset('assets/svgs/menu.svg',height: 12.h,),),
-            Expanded(child: LogoWidget(height: 14.h,)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Colors.white,size: 12.h,))
-          
-          ],),
-      
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: SvgPicture.asset(
+              'assets/svgs/menu.svg',
+              height: 12.h,
+            ),
+          ),
+          Expanded(
+              child: LogoWidget(
+            height: 14.h,
+          )),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 12.h,
+              ))
+        ],
+      ),
     );
   }
 }
