@@ -1,14 +1,16 @@
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
+import 'package:state_management/data/models/movie_model.dart';
 
 part 'movie_backdrop_event.dart';
 part 'movie_backdrop_state.dart';
-part 'movie_backdrop_bloc.freezed.dart';
 
 class MovieBackdropBloc extends Bloc<MovieBackdropEvent, MovieBackdropState> {
-  MovieBackdropBloc() : super(_Initial()) {
-    on<MovieBackdropEvent>((event, emit) {
-      // TODO: implement event handler
+  MovieBackdropBloc() : super(MovieBackdropInitial()) {
+    on<MovieBackdropEvent>((event, emit) async{
+      if (event is MovieBackdropChangedEvent){
+        emit( MovieBackdropChanged(event.currentMovie));
+      }
     });
   }
 }
