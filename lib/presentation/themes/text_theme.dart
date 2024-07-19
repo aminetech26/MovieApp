@@ -10,4 +10,4 @@ final themeData = ThemeData(
     appBarTheme: const AppBarTheme(elevation: 0.0),
     textTheme: TextTheme(
         displayLarge:
-            GoogleFonts.poppins(fontSize: 25.sp, color: Colors.white)));
+            GoogleFonts.poppins(fontSize: 15.sp, color: Colors.white)));

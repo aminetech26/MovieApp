@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:state_management/data/models/movie_model.dart';
+import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
 import 'package:state_management/presentation/journeys/home/movie_carousel/animated_movie_card_widget.dart';
-import 'package:state_management/presentation/journeys/home/movie_carousel/movie_carousel_card.dart';
 
 class MoviePageView extends StatefulWidget {
   final int initialPage;
@@ -38,6 +39,10 @@ class _MoviePageViewState extends State<MoviePageView> {
       margin: EdgeInsets.symmetric(vertical: 10.h),
       height: MediaQuery.sizeOf(context).height * 0.35,
       child: PageView.builder(
+          onPageChanged: (index) {
+            BlocProvider.of<MovieBackdropBloc>(context)
+                .add(MovieBackdropChangedEvent(widget.moviesList[index]));
+          },
           pageSnapping: true,
           itemCount: widget.moviesList.length,
           controller: _pageController,

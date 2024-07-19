@@ -30,7 +30,7 @@ Future initDependencies() async {
   getItInstance.registerLazySingleton<GetPlayingNow>(
       () => GetPlayingNow(getItInstance()));
   getItInstance
-      .registerFactory(() => MoviesCarouselBloc(getTrending: getItInstance()));
+      .registerFactory(() => MoviesCarouselBloc(getTrending: getItInstance(),movieBackdropBloc: getItInstance()));
 
   getItInstance.registerFactory(() => MovieBackdropBloc());
 }
