@@ -9,6 +9,7 @@ import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/movie_tabbed_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movies_carousel_bloc.dart';
 
 final getItInstance = GetIt.I;
@@ -29,8 +30,12 @@ Future initDependencies() async {
       () => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<GetPlayingNow>(
       () => GetPlayingNow(getItInstance()));
-  getItInstance
-      .registerFactory(() => MoviesCarouselBloc(getTrending: getItInstance(),movieBackdropBloc: getItInstance()));
+  getItInstance.registerFactory(() => MoviesCarouselBloc(
+      getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
 
   getItInstance.registerFactory(() => MovieBackdropBloc());
+  getItInstance.registerFactory(() => MovieTabbedBloc(
+      getPopular: GetPopular(getItInstance()),
+      getComingSoon: GetComingSoon(getItInstance()),
+      getPlayingNow: GetPlayingNow(getItInstance())));
 }
