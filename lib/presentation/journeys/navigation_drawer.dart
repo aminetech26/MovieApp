@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:state_management/common/constants/languages.dart';
+import 'package:state_management/common/constants/translation_constants.dart';
+import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/journeys/navigation_expanded_list_item.dart';
 import 'package:state_management/presentation/journeys/navigation_list_item.dart';
 import 'package:state_management/presentation/widgets/logo_widget.dart';
@@ -30,13 +33,13 @@ class NavigationDrawer extends StatelessWidget {
                 height: 60.h,
               ),
             ),
-            NavigationListItem(title: 'Favorite Movies', onPressed: () {}),
+            NavigationListItem(title: AppLocalizations.of(context).translate(TranslationConstants.favouriteMovies), onPressed: () {}),
             NavigationExpandedListItem(
                 title: 'Languages',
                 onPressed: () {},
-                children: const ['English', 'Spanish']),
-            NavigationListItem(title: 'Feedback', onPressed: () {}),
-            NavigationListItem(title: 'About', onPressed: () {}),
+                children: Languages.languagesList.map((e) => e.value).toList()),
+            NavigationListItem(title: AppLocalizations.of(context).translate(TranslationConstants.feedback), onPressed: () {}),
+            NavigationListItem(title: AppLocalizations.of(context).translate(TranslationConstants.about), onPressed: () {}),
           ],
         ),
       ),

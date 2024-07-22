@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/themes/app_color.dart';
 import 'package:state_management/presentation/themes/text_theme.dart';
 
@@ -9,7 +10,10 @@ class TabTitleWidget extends StatelessWidget {
   final bool isSelected;
 
   const TabTitleWidget(
-      {super.key,required this.onTap, required this.title, this.isSelected = false});
+      {super.key,
+      required this.onTap,
+      required this.title,
+      this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class TabTitleWidget extends StatelessWidget {
           ),
         ),
         child: Text(
-          title,
+          AppLocalizations.of(context).translate(title),
           style: isSelected
               ? Theme.of(context).textTheme.displayMedium
               : Theme.of(context).textTheme.whiteDisplayMedium,
