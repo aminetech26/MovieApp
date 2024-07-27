@@ -45,6 +45,7 @@ class _MovieAppState extends State<MovieApp> {
             builder: (context, state) {
               if (state is LanguageChangedState) {
                 return Wiredash(
+                  options: WiredashOptionsData(locale: state.newLocale),
                   projectId: 'movieapp-drow5q1',
                   secret: 'sMwaa9QbxnLIRvaGFS1GFgi_5yK3aSeu',
                   child: MaterialApp(
