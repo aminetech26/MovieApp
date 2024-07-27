@@ -22,10 +22,11 @@ class MovieApp extends StatelessWidget {
           title: 'Movie App',
           supportedLocales:
               Languages.languagesList.map((e) => Locale(e.code)).toList(),
-          locale: Locale(Languages.languagesList[0].code),
+          locale: Locale(Languages.languagesList[1].code),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
           home: const HomeScreen(),

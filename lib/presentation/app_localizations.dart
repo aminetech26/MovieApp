@@ -18,8 +18,7 @@ class AppLocalizations {
         .loadString('assets/languages/${locale.languageCode}.json');
     final Map<String, dynamic> jsonMap = json.decode(jsonString);
 
-    _localizedStrings =
-        jsonMap.map((key, value) => MapEntry(key, value.toString()));
+    _localizedStrings = jsonMap.map((key, value) => MapEntry(key, value));
 
     return true;
   }
