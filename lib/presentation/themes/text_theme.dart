@@ -17,4 +17,8 @@ final themeData = ThemeData(
 extension TextThemeExtension on TextTheme {
   TextStyle get whiteDisplayMedium =>
       displayMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.w600);
+  TextStyle get dialogTitleTextTheme =>
+      displayMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.w600);
+  TextStyle get dialogDescriptionTextTheme =>
+      displayMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.w400);
 }

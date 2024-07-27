@@ -7,6 +7,7 @@ import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/journeys/navigation_expanded_list_item.dart';
 import 'package:state_management/presentation/journeys/navigation_list_item.dart';
+import 'package:state_management/presentation/widgets/app_dialog.dart';
 import 'package:state_management/presentation/widgets/logo_widget.dart';
 import 'package:wiredash/wiredash.dart';
 
@@ -43,7 +44,6 @@ class NavigationDrawer extends StatelessWidget {
             NavigationExpandedListItem(
                 title: 'Languages',
                 onPressed: (index) {
-                  print('index passed to bloc : $index');
                   BlocProvider.of<LanguageBloc>(context).add(
                       LanguageChangedEvent(
                           newLocale:
@@ -60,10 +60,29 @@ class NavigationDrawer extends StatelessWidget {
             NavigationListItem(
                 title: AppLocalizations.of(context)
                     .translate(TranslationConstants.about),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _showDialog(context);
+                }),
           ],
         ),
       ),
     );
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AppDialog(
+            title: TranslationConstants.dialogTitle,
+            description: TranslationConstants.dialogDescription,
+            buttonText: TranslationConstants.okay,
+            image: Image.asset(
+              'assets/pngs/tmdb_logo.png',
+              height: 32.h,
+            ),
+          );
+        });
   }
 }

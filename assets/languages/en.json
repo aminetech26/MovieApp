@@ -5,5 +5,8 @@
     "feedback":"Feedback",
     "popular":"Popular",
     "now":"Now",
-    "soon":"Soon"
+    "soon":"Soon",
+    "okay": "Okay",
+    "dialogTitle":"About",
+    "dialogDescription": "This product uses the TMDb API but is not endorsed or certified by TMDb. This app is developed for education purpose."
 }
