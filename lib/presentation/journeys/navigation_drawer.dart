@@ -8,6 +8,7 @@ import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/journeys/navigation_expanded_list_item.dart';
 import 'package:state_management/presentation/journeys/navigation_list_item.dart';
 import 'package:state_management/presentation/widgets/logo_widget.dart';
+import 'package:wiredash/wiredash.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({super.key});
@@ -52,7 +53,10 @@ class NavigationDrawer extends StatelessWidget {
             NavigationListItem(
                 title: AppLocalizations.of(context)
                     .translate(TranslationConstants.feedback),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Wiredash.of(context).show();
+                }),
             NavigationListItem(
                 title: AppLocalizations.of(context)
                     .translate(TranslationConstants.about),

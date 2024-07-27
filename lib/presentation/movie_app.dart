@@ -8,6 +8,7 @@ import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/journeys/home/home_screen.dart';
 import 'package:state_management/presentation/themes/text_theme.dart';
+import 'package:wiredash/wiredash.dart';
 
 class MovieApp extends StatefulWidget {
   const MovieApp({super.key});
@@ -43,21 +44,25 @@ class _MovieAppState extends State<MovieApp> {
           child: BlocBuilder<LanguageBloc, LanguageState>(
             builder: (context, state) {
               if (state is LanguageChangedState) {
-                return MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  theme: themeData,
-                  title: 'Movie App',
-                  supportedLocales: Languages.languagesList
-                      .map((e) => Locale(e.code))
-                      .toList(),
-                  locale: state.newLocale,
-                  localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                  ],
-                  home: const HomeScreen(),
+                return Wiredash(
+                  projectId: 'movieapp-drow5q1',
+                  secret: 'sMwaa9QbxnLIRvaGFS1GFgi_5yK3aSeu',
+                  child: MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    theme: themeData,
+                    title: 'Movie App',
+                    supportedLocales: Languages.languagesList
+                        .map((e) => Locale(e.code))
+                        .toList(),
+                    locale: state.newLocale,
+                    localizationsDelegates: const [
+                      AppLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                    ],
+                    home: const HomeScreen(),
+                  ),
                 );
               }
               return const SizedBox.shrink();
