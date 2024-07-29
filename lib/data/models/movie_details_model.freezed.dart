@@ -22,7 +22,6 @@ MovieDetailsModel _$MovieDetailsModelFromJson(Map<String, dynamic> json) {
 mixin _$MovieDetailsModel {
   bool? get adult => throw _privateConstructorUsedError;
   String? get backdropPath => throw _privateConstructorUsedError;
-  bool get belongsToCollection => throw _privateConstructorUsedError;
   int? get budget => throw _privateConstructorUsedError;
   List<Genres>? get genres => throw _privateConstructorUsedError;
   String? get homepage => throw _privateConstructorUsedError;
@@ -64,7 +63,6 @@ abstract class $MovieDetailsModelCopyWith<$Res> {
   $Res call(
       {bool? adult,
       String? backdropPath,
-      bool belongsToCollection,
       int? budget,
       List<Genres>? genres,
       String? homepage,
@@ -104,7 +102,6 @@ class _$MovieDetailsModelCopyWithImpl<$Res, $Val extends MovieDetailsModel>
   $Res call({
     Object? adult = freezed,
     Object? backdropPath = freezed,
-    Object? belongsToCollection = null,
     Object? budget = freezed,
     Object? genres = freezed,
     Object? homepage = freezed,
@@ -137,10 +134,6 @@ class _$MovieDetailsModelCopyWithImpl<$Res, $Val extends MovieDetailsModel>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      belongsToCollection: null == belongsToCollection
-          ? _value.belongsToCollection
-          : belongsToCollection // ignore: cast_nullable_to_non_nullable
-              as bool,
       budget: freezed == budget
           ? _value.budget
           : budget // ignore: cast_nullable_to_non_nullable
@@ -244,7 +237,6 @@ abstract class _$$MovieDetailsModelImplCopyWith<$Res>
   $Res call(
       {bool? adult,
       String? backdropPath,
-      bool belongsToCollection,
       int? budget,
       List<Genres>? genres,
       String? homepage,
@@ -282,7 +274,6 @@ class __$$MovieDetailsModelImplCopyWithImpl<$Res>
   $Res call({
     Object? adult = freezed,
     Object? backdropPath = freezed,
-    Object? belongsToCollection = null,
     Object? budget = freezed,
     Object? genres = freezed,
     Object? homepage = freezed,
@@ -315,10 +306,6 @@ class __$$MovieDetailsModelImplCopyWithImpl<$Res>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      belongsToCollection: null == belongsToCollection
-          ? _value.belongsToCollection
-          : belongsToCollection // ignore: cast_nullable_to_non_nullable
-              as bool,
       budget: freezed == budget
           ? _value.budget
           : budget // ignore: cast_nullable_to_non_nullable
@@ -417,7 +404,6 @@ class _$MovieDetailsModelImpl implements _MovieDetailsModel {
   const _$MovieDetailsModelImpl(
       {required this.adult,
       required this.backdropPath,
-      required this.belongsToCollection,
       required this.budget,
       required final List<Genres>? genres,
       required this.homepage,
@@ -452,8 +438,6 @@ class _$MovieDetailsModelImpl implements _MovieDetailsModel {
   final bool? adult;
   @override
   final String? backdropPath;
-  @override
-  final bool belongsToCollection;
   @override
   final int? budget;
   final List<Genres>? _genres;
@@ -535,7 +519,7 @@ class _$MovieDetailsModelImpl implements _MovieDetailsModel {
 
   @override
   String toString() {
-    return 'MovieDetailsModel(adult: $adult, backdropPath: $backdropPath, belongsToCollection: $belongsToCollection, budget: $budget, genres: $genres, homepage: $homepage, id: $id, imdbId: $imdbId, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, productionCompanies: $productionCompanies, productionCountries: $productionCountries, releaseDate: $releaseDate, revenue: $revenue, runtime: $runtime, spokenLanguages: $spokenLanguages, status: $status, tagline: $tagline, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'MovieDetailsModel(adult: $adult, backdropPath: $backdropPath, budget: $budget, genres: $genres, homepage: $homepage, id: $id, imdbId: $imdbId, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, productionCompanies: $productionCompanies, productionCountries: $productionCountries, releaseDate: $releaseDate, revenue: $revenue, runtime: $runtime, spokenLanguages: $spokenLanguages, status: $status, tagline: $tagline, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
   }
 
   @override
@@ -546,8 +530,6 @@ class _$MovieDetailsModelImpl implements _MovieDetailsModel {
             (identical(other.adult, adult) || other.adult == adult) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
-            (identical(other.belongsToCollection, belongsToCollection) ||
-                other.belongsToCollection == belongsToCollection) &&
             (identical(other.budget, budget) || other.budget == budget) &&
             const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.homepage, homepage) ||
@@ -590,7 +572,6 @@ class _$MovieDetailsModelImpl implements _MovieDetailsModel {
         runtimeType,
         adult,
         backdropPath,
-        belongsToCollection,
         budget,
         const DeepCollectionEquality().hash(_genres),
         homepage,
@@ -634,7 +615,6 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
   const factory _MovieDetailsModel(
       {required final bool? adult,
       required final String? backdropPath,
-      required final bool belongsToCollection,
       required final int? budget,
       required final List<Genres>? genres,
       required final String? homepage,
@@ -665,8 +645,6 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
   bool? get adult;
   @override
   String? get backdropPath;
-  @override
-  bool get belongsToCollection;
   @override
   int? get budget;
   @override

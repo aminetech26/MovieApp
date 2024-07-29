@@ -13,7 +13,6 @@ class MovieDetailsModel with _$MovieDetailsModel {
   const factory MovieDetailsModel(
       {required final bool? adult,
       required final String? backdropPath,
-      required final bool belongsToCollection,
       required final int? budget,
       required final List<Genres>? genres,
       required final String? homepage,

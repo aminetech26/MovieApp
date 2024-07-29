@@ -5,11 +5,13 @@ import 'package:state_management/data/data_sources/movie_remote_data_source.dart
 import 'package:state_management/data/repositories/movies_repository_imp.dart';
 import 'package:state_management/domain/repositories/movies_repository.dart';
 import 'package:state_management/domain/usecases/get_coming_soon.dart';
+import 'package:state_management/domain/usecases/get_movie_details.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_tabbed_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movies_carousel_bloc.dart';
 
@@ -31,13 +33,17 @@ Future initDependencies() async {
       () => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<GetPlayingNow>(
       () => GetPlayingNow(getItInstance()));
+  getItInstance.registerLazySingleton<GetMovieDetails>(
+      () => GetMovieDetails(getItInstance()));
   getItInstance.registerFactory(() => MoviesCarouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
 
   getItInstance.registerFactory(() => MovieBackdropBloc());
   getItInstance.registerFactory(() => MovieTabbedBloc(
-      getPopular: GetPopular(getItInstance()),
-      getComingSoon: GetComingSoon(getItInstance()),
-      getPlayingNow: GetPlayingNow(getItInstance())));
+      getPopular: getItInstance(),
+      getComingSoon: getItInstance(),
+      getPlayingNow: getItInstance()));
   getItInstance.registerFactory(() => LanguageBloc());
+  getItInstance.registerFactory(
+      () => MovieDetailsBloc(getMovieDetails: getItInstance()));
 }
