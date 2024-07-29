@@ -14,11 +14,13 @@ class MovieTabbedInitial extends MovieTabbedState {
 
 class MovieTabChangedState extends MovieTabbedState {
   final List<MovieModel> moviesList;
-  const MovieTabChangedState({required this.moviesList,required super.currentTabIndex});
+  const MovieTabChangedState(
+      {required this.moviesList, required super.currentTabIndex});
   @override
   List<Object> get props => [moviesList];
 }
 
 class MovieTabChangedError extends MovieTabbedState {
-  const MovieTabChangedError({required super.currentTabIndex});
+  final AppErrorType errorType;
+  const MovieTabChangedError({required super.currentTabIndex,required this.errorType});
 }

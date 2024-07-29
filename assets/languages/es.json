@@ -8,5 +8,9 @@
     "soon": "Pronto",
     "okay": "Bueno",
     "dialogTitle":"Sobre",
-    "dialogDescription": "Este producto utiliza la API de TMDb pero no está respaldado ni certificado por TMDb. Esta aplicación está desarrollada con fines educativos."
+    "dialogDescription": "Este producto utiliza la API de TMDb pero no está respaldado ni certificado por TMDb. Esta aplicación está desarrollada con fines educativos.",
+    "retry": "Rever",
+    "somethingWentWrong": "Algo salió mal...",
+    "checkNetwork": "Verifique su conexión de red y presione el botón Reintentar o colóquelo como error presionando el botón Comentarios.",
+    "noMovies": "Lo siento, no hay películas en esta sección."
 }

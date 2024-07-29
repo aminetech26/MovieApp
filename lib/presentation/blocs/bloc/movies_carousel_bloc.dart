@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:state_management/data/models/movie_model.dart';
+import 'package:state_management/domain/entities/app_error.dart';
 import 'package:state_management/domain/entities/no_params.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
@@ -20,7 +21,7 @@ class MoviesCarouselBloc
       if (event is CarouselLoadEvent) {
         final moviesEither = await getTrending(NoParams());
         moviesEither.fold((l) {
-          emit(MovieCarouselError());
+          emit(MovieCarouselError(errorType: l.errorType));
         }, (movies) {
           movieBackdropBloc
               .add(MovieBackdropChangedEvent(movies[event.defaultIndex]));

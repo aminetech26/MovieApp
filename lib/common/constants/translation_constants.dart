@@ -10,4 +10,8 @@ class TranslationConstants {
   static const String okay = 'okay';  
   static const String dialogTitle = 'dialogTitle';  
   static const String dialogDescription = 'dialogDescription';  
+  static const String retry = 'retry';
+  static const String somethingWentWrong = 'somethingWentWrong';
+  static const String checkNetwork = 'checkNetwork';
+  static const String noMovies = 'noMovies';
 }
