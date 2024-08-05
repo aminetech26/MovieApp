@@ -4,11 +4,13 @@ import 'package:state_management/data/core/api_client.dart';
 import 'package:state_management/data/data_sources/movie_remote_data_source.dart';
 import 'package:state_management/data/repositories/movies_repository_imp.dart';
 import 'package:state_management/domain/repositories/movies_repository.dart';
+import 'package:state_management/domain/usecases/get_cast_crew.dart';
 import 'package:state_management/domain/usecases/get_coming_soon.dart';
 import 'package:state_management/domain/usecases/get_movie_details.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
+import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
@@ -35,6 +37,8 @@ Future initDependencies() async {
       () => GetPlayingNow(getItInstance()));
   getItInstance.registerLazySingleton<GetMovieDetails>(
       () => GetMovieDetails(getItInstance()));
+  getItInstance.registerLazySingleton<GetCastCrew>(
+      () => GetCastCrew(getItInstance()));    
   getItInstance.registerFactory(() => MoviesCarouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
 
@@ -45,5 +49,7 @@ Future initDependencies() async {
       getPlayingNow: getItInstance()));
   getItInstance.registerFactory(() => LanguageBloc());
   getItInstance.registerFactory(
-      () => MovieDetailsBloc(getMovieDetails: getItInstance()));
+      () => MovieDetailsBloc(getMovieDetails: getItInstance(),crewBloc: getItInstance()));
+  getItInstance.registerFactory(
+  () => CrewBloc(getCastCrew: getItInstance()));
 }

@@ -21,4 +21,6 @@ extension TextThemeExtension on TextTheme {
       displayMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.w600);
   TextStyle get dialogDescriptionTextTheme =>
       displayMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.w400);
+  TextStyle get captionTextTheme => displayMedium!.copyWith(
+      color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12.sp);
 }

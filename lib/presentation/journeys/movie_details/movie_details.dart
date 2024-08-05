@@ -2,9 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:state_management/common/constants/translation_constants.dart';
 import 'package:state_management/di/get_it.dart';
+import 'package:state_management/presentation/app_localizations.dart';
+import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
 import 'package:state_management/presentation/journeys/movie_details/big_poster.dart';
+import 'package:state_management/presentation/journeys/movie_details/cast_widget.dart';
 
 import 'package:state_management/presentation/journeys/movie_details/movie_details_arguments.dart';
 import 'package:state_management/presentation/themes/text_theme.dart';
@@ -23,11 +27,13 @@ class MovieDetails extends StatefulWidget {
 
 class _MovieDetailsState extends State<MovieDetails> {
   late MovieDetailsBloc movieDetailsBloc;
+  late CrewBloc crewBloc;
 
   @override
   void initState() {
     super.initState();
     movieDetailsBloc = getItInstance<MovieDetailsBloc>();
+    crewBloc = movieDetailsBloc.crewBloc;
     movieDetailsBloc
         .add(MovieDetailsLoad(movieId: widget.movieDetailArguments.movieId));
   }
@@ -36,34 +42,54 @@ class _MovieDetailsState extends State<MovieDetails> {
   void dispose() {
     super.dispose();
     movieDetailsBloc.close();
+    crewBloc.close();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider.value(
-        value: movieDetailsBloc,
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider.value(
+            value: movieDetailsBloc,
+          ),
+          BlocProvider(
+            create: (context) => crewBloc,
+          ),
+        ],
         child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
           builder: (context, state) {
             if (state is MovieDetailsLoaded) {
               final movieDetail = state.movieDetails;
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  BigPoster(
-                    movie: movieDetail,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    BigPoster(
+                      movie: movieDetail,
                     ),
-                    child: Text(
-                      movieDetail.overview!,
-                      style: Theme.of(context).textTheme.whiteDisplayMedium,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                      ),
+                      child: Text(
+                        movieDetail.overview!,
+                        style: Theme.of(context).textTheme.whiteDisplayMedium,
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Text(
+                        AppLocalizations.of(context)
+                            .translate(TranslationConstants.cast),
+                        style: Theme.of(context).textTheme.whiteDisplayMedium,
+                      ),
+                    ),
+                    const CastWidget(),
+                    //VideosWidget(videosBloc: _videosBloc),
+                  ],
+                ),
               );
             } else if (state is MovieDetailsLoadingError) {
               return AppErrorWidget(

@@ -52,13 +52,11 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     MovieDetailsModel movieDetails = MovieDetailsModel.fromJson(response);
     return movieDetails;
   }
-  
+
   @override
-  Future<List<CastModel>> getCast(int id) async{
+  Future<List<CastModel>> getCast(int id) async {
     final response = await _apiClient.get('movie/$id/credits');
-    final castCrew = CastResultModel.fromJson(response);
-    return castCrew.cast;
+    final castCrew = CastCrewResultModel.fromJson(response);
+    return castCrew.cast!;
   }
-
-
 }
