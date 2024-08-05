@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:state_management/data/data_sources/movie_remote_data_source.dart';
+import 'package:state_management/data/models/cast_result_model.dart';
 import 'package:state_management/data/models/movie_details_model.dart';
 import 'package:state_management/data/models/movie_model.dart';
 import 'package:state_management/domain/entities/app_error.dart';
@@ -82,8 +83,7 @@ class MoviesRepositoryImp extends MoviesRepository {
   }
 
   @override
-  Future<Either<AppError, MovieDetailsModel>> getMovieDetails(int id) async{
-
+  Future<Either<AppError, MovieDetailsModel>> getMovieDetails(int id) async {
     try {
       final movieDetails = await remoteDataSource.getMovieDetails(id);
       return Right(movieDetails);
@@ -97,6 +97,22 @@ class MoviesRepositoryImp extends MoviesRepository {
         return const Left(AppError(AppErrorType.api));
       }
     }
-    
+  }
+
+  @override
+  Future<Either<AppError, List<CastModel>>> getCast(int id) async{
+    try {
+      final castCrew = await remoteDataSource.getCast(id);
+      return Right(castCrew);
+    } on DioException catch (e) {
+      if (e.error is SocketException) {
+        // Log detailed information
+        log('SocketException: ${e.error}, Message: ${e.message}, ErrorType: ${e.type}');
+        return const Left(AppError(AppErrorType.network));
+      } else {
+        log('DioError: ${e.type}, Message: ${e.message}, Response: ${e.response}');
+        return const Left(AppError(AppErrorType.api));
+      }
+    }
   }
 }
