@@ -15,7 +15,7 @@ class CastWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is CrewLoaded) {
           return SizedBox(
-            height: 100.h,
+            height: 150.h,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -23,7 +23,7 @@ class CastWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 final castEntity = state.crew[index];
                 return SizedBox(
-                  height: 100.h,
+                  height: 200.h,
                   width: 160.w,
                   child: Card(
                     elevation: 1,
@@ -45,7 +45,7 @@ class CastWidget extends StatelessWidget {
                               top: Radius.circular(8.w),
                             ),
                             child: CachedNetworkImage(
-                              height: 100.h,
+                              height: 300.h,
                               width: 160.w,
                               imageUrl:
                                   '${ApiConstants.BASE_IMAGE_URL}${castEntity.profilePath}',
@@ -58,7 +58,7 @@ class CastWidget extends StatelessWidget {
                             horizontal: 8.w,
                           ),
                           child: Text(
-                            castEntity.name,
+                            castEntity.name!,
                             overflow: TextOverflow.fade,
                             maxLines: 1,
                             style: Theme.of(context).textTheme.displaySmall,
@@ -71,7 +71,7 @@ class CastWidget extends StatelessWidget {
                             bottom: 2.h,
                           ),
                           child: Text(
-                            castEntity.character,
+                            castEntity.character!,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: Theme.of(context).textTheme.captionTextTheme,

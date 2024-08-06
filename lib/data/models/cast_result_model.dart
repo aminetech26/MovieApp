@@ -1,21 +1,29 @@
 class CastCrewResultModel {
-  int? id;
-  List<CastModel>? cast;
-  List<Crew>? crew;
+  late int id;
+  late List<CastModel> cast;
+  late List<Crew> crew;
 
-  CastCrewResultModel(
-      {required this.id, required this.cast, required this.crew});
+  CastCrewResultModel({
+    required this.id,
+    required this.cast,
+    required this.crew,
+  });
 
   CastCrewResultModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+
+    // Initialize the lists
+    cast = [];
+    crew = [];
+
     if (json['cast'] != null) {
       json['cast'].forEach((v) {
-        cast!.add(CastModel.fromJson(v));
+        cast.add(CastModel.fromJson(v));
       });
     }
     if (json['crew'] != null) {
       json['crew'].forEach((v) {
-        crew!.add(Crew.fromJson(v));
+        crew.add(Crew.fromJson(v));
       });
     }
   }
@@ -23,25 +31,21 @@ class CastCrewResultModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    if (cast != null) {
-      data['cast'] = cast!.map((v) => v.toJson()).toList();
-    }
-    if (crew != null) {
-      data['crew'] = crew!.map((v) => v.toJson()).toList();
-    }
+    data['cast'] = cast.map((v) => v.toJson()).toList();
+    data['crew'] = crew.map((v) => v.toJson()).toList();
     return data;
   }
 }
 
 class CastModel {
-  final int castId;
-  final String character;
-  final String creditId;
-  final int gender;
-  final int id;
-  final String name;
-  final int order;
-  final String profilePath;
+  final int? castId;
+  final String? character;
+  final String? creditId;
+  final int? gender;
+  final int? id;
+  final String? name;
+  final int? order;
+  final String? profilePath;
 
   CastModel({
     required this.castId,

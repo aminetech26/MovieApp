@@ -79,7 +79,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 16.h),
                       child: Text(
                         AppLocalizations.of(context)
                             .translate(TranslationConstants.cast),
