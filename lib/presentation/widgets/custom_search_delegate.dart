@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:state_management/presentation/blocs/bloc/search_bloc.dart';
@@ -14,8 +15,16 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context).copyWith(
+    return themeData.copyWith(
+      appBarTheme: const AppBarTheme(
+          elevation: 0.0,
+          backgroundColor: AppColor.vulcan,
+          titleTextStyle: TextStyle(color: Colors.white),
+          
+          ),
       inputDecorationTheme: InputDecorationTheme(
+        border: InputBorder.none,
+        labelStyle: Theme.of(context).textTheme.whiteDisplayMedium,
         hintStyle: Theme.of(context).textTheme.whiteDisplayMedium,
       ),
     );
@@ -69,6 +78,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 padding: EdgeInsets.symmetric(horizontal: 64.w),
                 child: Text(
                   'No movies found for : $query',
+                  style: TextStyle(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
