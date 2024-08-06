@@ -10,6 +10,7 @@ import 'package:state_management/domain/usecases/get_movie_details.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
+import 'package:state_management/domain/usecases/get_videos.dart';
 import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
@@ -35,6 +36,8 @@ Future initDependencies() async {
       () => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<GetPlayingNow>(
       () => GetPlayingNow(getItInstance()));
+  getItInstance.registerLazySingleton<GetVideos>(
+  () => GetVideos(getItInstance()));
   getItInstance.registerLazySingleton<GetMovieDetails>(
       () => GetMovieDetails(getItInstance()));
   getItInstance.registerLazySingleton<GetCastCrew>(
@@ -52,4 +55,5 @@ Future initDependencies() async {
       () => MovieDetailsBloc(getMovieDetails: getItInstance(),crewBloc: getItInstance()));
   getItInstance.registerFactory(
   () => CrewBloc(getCastCrew: getItInstance()));
+  
 }
