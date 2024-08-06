@@ -9,6 +9,7 @@ import 'package:state_management/domain/usecases/get_coming_soon.dart';
 import 'package:state_management/domain/usecases/get_movie_details.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
+import 'package:state_management/domain/usecases/get_searched_movies.dart';
 import 'package:state_management/domain/usecases/get_trending.dart';
 import 'package:state_management/domain/usecases/get_videos.dart';
 import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
@@ -17,6 +18,7 @@ import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dar
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_tabbed_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movies_carousel_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/search_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/videos_bloc.dart';
 
 final getItInstance = GetIt.I;
@@ -43,9 +45,10 @@ Future initDependencies() async {
       () => GetMovieDetails(getItInstance()));
   getItInstance.registerLazySingleton<GetCastCrew>(
       () => GetCastCrew(getItInstance()));    
+  getItInstance.registerLazySingleton<GetSearchedMovies>(
+      () => GetSearchedMovies(getItInstance()));
   getItInstance.registerFactory(() => MoviesCarouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
-
   getItInstance.registerFactory(() => MovieBackdropBloc());
   getItInstance.registerFactory(() => MovieTabbedBloc(
       getPopular: getItInstance(),
@@ -58,5 +61,5 @@ Future initDependencies() async {
   () => CrewBloc(getCastCrew: getItInstance()));
   getItInstance.registerFactory(
   () => VideosBloc(getVideos: getItInstance()));
-  
+  getItInstance.registerFactory(() => SearchBloc(getSearchedMovies:  getItInstance()));
 }

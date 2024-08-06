@@ -133,4 +133,21 @@ class MoviesRepositoryImp extends MoviesRepository {
       }
     }
   }
+  
+  @override
+  Future<Either<AppError, List<MovieModel>>> getSearchedMovies(String query) async{
+    try {
+      final movies = await remoteDataSource.getSearchedMovies(query);
+      return Right(movies);
+    } on DioException catch (e) {
+      if (e.error is SocketException) {
+        // Log detailed information
+        log('SocketException: ${e.error}, Message: ${e.message}, ErrorType: ${e.type}');
+        return const Left(AppError(AppErrorType.network));
+      } else {
+        log('DioError: ${e.type}, Message: ${e.message}, Response: ${e.response}');
+        return const Left(AppError(AppErrorType.api));
+      }
+    }
+  }
 }
