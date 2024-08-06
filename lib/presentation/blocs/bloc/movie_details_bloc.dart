@@ -7,6 +7,7 @@ import 'package:state_management/domain/entities/app_error.dart';
 import 'package:state_management/domain/entities/movie_params.dart';
 import 'package:state_management/domain/usecases/get_movie_details.dart';
 import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/videos_bloc.dart';
 
 part 'movie_details_event.dart';
 part 'movie_details_state.dart';
@@ -14,7 +15,8 @@ part 'movie_details_state.dart';
 class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   GetMovieDetails getMovieDetails;
   CrewBloc crewBloc;
-  MovieDetailsBloc({required this.getMovieDetails, required this.crewBloc})
+  VideosBloc  videosBloc;
+  MovieDetailsBloc({required this.getMovieDetails, required this.crewBloc, required this.videosBloc})
       : super(MovieDetailsInitial()) {
     on<MovieDetailsEvent>((event, emit) async {
       getMovieDetails = getItInstance<GetMovieDetails>();
@@ -27,6 +29,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           emit(MovieDetailsLoaded(movieDetails: movieDetails));
         });
         crewBloc.add(LoadCrewEvent(event.movieId));
+        videosBloc.add(LoadVideosEvent(event.movieId));
       }
     });
   }

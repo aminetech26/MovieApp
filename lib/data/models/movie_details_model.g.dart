@@ -26,7 +26,7 @@ _$MovieDetailsModelImpl _$$MovieDetailsModelImplFromJson(
       productionCompanies: (json['production_companies'] as List<dynamic>?)
           ?.map((e) => ProductionCompanies.fromJson(e as Map<String, dynamic>))
           .toList(),
-      productionCountries: (json['productionCountries'] as List<dynamic>?)
+      productionCountries: (json['production_countries'] as List<dynamic>?)
           ?.map((e) => ProductionCountries.fromJson(e as Map<String, dynamic>))
           .toList(),
       releaseDate: json['release_date'] as String?,

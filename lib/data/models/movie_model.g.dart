@@ -17,7 +17,7 @@ _$MovieModelImpl _$$MovieModelImplFromJson(Map<String, dynamic> json) =>
       mediaType: json['media_type'] as String?,
       adult: json['adult'] as bool?,
       originalLanguage: json['original_language'] as String?,
-      genreIds: (json['genreIds'] as List<dynamic>?)
+      genreIds: (json['genre_ids'] as List<dynamic>?)
           ?.map((e) => (e as num).toInt())
           .toList(),
       popularity: (json['popularity'] as num?)?.toDouble(),

@@ -17,6 +17,7 @@ import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dar
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_tabbed_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movies_carousel_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/videos_bloc.dart';
 
 final getItInstance = GetIt.I;
 
@@ -52,8 +53,10 @@ Future initDependencies() async {
       getPlayingNow: getItInstance()));
   getItInstance.registerFactory(() => LanguageBloc());
   getItInstance.registerFactory(
-      () => MovieDetailsBloc(getMovieDetails: getItInstance(),crewBloc: getItInstance()));
+      () => MovieDetailsBloc(getMovieDetails: getItInstance(),crewBloc: getItInstance(),videosBloc: getItInstance()));
   getItInstance.registerFactory(
   () => CrewBloc(getCastCrew: getItInstance()));
+  getItInstance.registerFactory(
+  () => VideosBloc(getVideos: getItInstance()));
   
 }

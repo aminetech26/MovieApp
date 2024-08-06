@@ -7,10 +7,12 @@ import 'package:state_management/di/get_it.dart';
 import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/videos_bloc.dart';
 import 'package:state_management/presentation/journeys/movie_details/big_poster.dart';
 import 'package:state_management/presentation/journeys/movie_details/cast_widget.dart';
 
 import 'package:state_management/presentation/journeys/movie_details/movie_details_arguments.dart';
+import 'package:state_management/presentation/journeys/movie_details/videos_widget.dart';
 import 'package:state_management/presentation/themes/text_theme.dart';
 import 'package:state_management/presentation/widgets/app_error_widget.dart';
 
@@ -28,12 +30,14 @@ class MovieDetails extends StatefulWidget {
 class _MovieDetailsState extends State<MovieDetails> {
   late MovieDetailsBloc movieDetailsBloc;
   late CrewBloc crewBloc;
+  late VideosBloc videosBloc;
 
   @override
   void initState() {
     super.initState();
     movieDetailsBloc = getItInstance<MovieDetailsBloc>();
     crewBloc = movieDetailsBloc.crewBloc;
+    videosBloc = movieDetailsBloc.videosBloc;
     movieDetailsBloc
         .add(MovieDetailsLoad(movieId: widget.movieDetailArguments.movieId));
   }
@@ -43,6 +47,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     super.dispose();
     movieDetailsBloc.close();
     crewBloc.close();
+    videosBloc.close();
   }
 
   @override
@@ -55,6 +60,9 @@ class _MovieDetailsState extends State<MovieDetails> {
           ),
           BlocProvider(
             create: (context) => crewBloc,
+          ),
+          BlocProvider(
+            create: (context) => videosBloc,
           ),
         ],
         child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
@@ -88,7 +96,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       ),
                     ),
                     const CastWidget(),
-                    //VideosWidget(videosBloc: _videosBloc),
+                    VideosWidget(videosBloc: videosBloc),
                   ],
                 ),
               );
