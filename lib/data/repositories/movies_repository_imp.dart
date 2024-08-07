@@ -1,19 +1,24 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:state_management/data/data_sources/movie_local_data_source.dart';
 import 'package:state_management/data/data_sources/movie_remote_data_source.dart';
 import 'package:state_management/data/models/cast_result_model.dart';
 import 'package:state_management/data/models/movie_details_model.dart';
 import 'package:state_management/data/models/movie_model.dart';
 import 'package:state_management/data/models/video_model.dart';
+import 'package:state_management/data/tables/movie_table.dart';
 import 'package:state_management/domain/entities/app_error.dart';
 import 'package:state_management/domain/repositories/movies_repository.dart';
 
 class MoviesRepositoryImp extends MoviesRepository {
+
   final MovieRemoteDataSource remoteDataSource;
-  MoviesRepositoryImp(this.remoteDataSource);
+  final MovieLocalDataSource localDataSource;
+
+  MoviesRepositoryImp(this.remoteDataSource,this.localDataSource);
+
   @override
   Future<Either<AppError, List<MovieModel>>> getTrending() async {
     try {
@@ -148,6 +153,46 @@ class MoviesRepositoryImp extends MoviesRepository {
         log('DioError: ${e.type}, Message: ${e.message}, Response: ${e.response}');
         return const Left(AppError(AppErrorType.api));
       }
+    }
+  }
+
+  @override
+  Future<Either<AppError, bool>> checkIfMovieFavourite(int movieId) async{
+    try {
+      final isFavourite = await localDataSource.isMovieFavourite(movieId);
+      return Right(isFavourite);
+    } on Exception {
+      return const Left(AppError(AppErrorType.database));
+    }    
+  }
+
+  @override
+  Future<Either<AppError, List<MovieTable>>> getFavouriteMovies() async{
+    try {
+      final movies = await localDataSource.getMovies();
+      return Right(movies);
+    } on Exception {
+      return const Left(AppError(AppErrorType.database));
+    }
+  }
+
+  @override
+  Future<Either<AppError, void>> removeMovie(int movieId) async{
+    try {
+      await localDataSource.deleteMovie(movieId);
+      return const Right(null);
+    } on Exception {
+      return const Left(AppError(AppErrorType.database));
+    }
+  }
+
+  @override
+  Future<Either<AppError, void>> saveMovie(MovieTable movie) async{
+    try {
+      await localDataSource.cacheMovies(movie);
+      return const Right(null);
+    } on Exception {
+      return const Left(AppError(AppErrorType.database));
     }
   }
 }

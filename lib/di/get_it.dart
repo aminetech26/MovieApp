@@ -28,7 +28,7 @@ Future initDependencies() async {
   getItInstance
       .registerLazySingleton<ApiClient>(() => ApiClient(getItInstance()));
   getItInstance.registerLazySingleton<MoviesRepository>(
-      () => MoviesRepositoryImp(getItInstance()));
+      () => MoviesRepositoryImp(getItInstance(), getItInstance()));
   getItInstance.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(getItInstance()));
   getItInstance

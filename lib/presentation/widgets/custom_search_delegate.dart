@@ -17,11 +17,10 @@ class CustomSearchDelegate extends SearchDelegate {
   ThemeData appBarTheme(BuildContext context) {
     return themeData.copyWith(
       appBarTheme: const AppBarTheme(
-          elevation: 0.0,
-          backgroundColor: AppColor.vulcan,
-          titleTextStyle: TextStyle(color: Colors.white),
-          
-          ),
+        elevation: 0.0,
+        backgroundColor: AppColor.vulcan,
+        titleTextStyle: TextStyle(color: Colors.white),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         border: InputBorder.none,
         labelStyle: Theme.of(context).textTheme.whiteDisplayMedium,
@@ -78,7 +77,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 padding: EdgeInsets.symmetric(horizontal: 64.w),
                 child: Text(
                   'No movies found for : $query',
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -92,7 +91,7 @@ class CustomSearchDelegate extends SearchDelegate {
             scrollDirection: Axis.vertical,
           );
         } else {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
