@@ -17,6 +17,7 @@ import 'package:state_management/domain/usecases/get_trending.dart';
 import 'package:state_management/domain/usecases/get_videos.dart';
 import 'package:state_management/domain/usecases/save_movie.dart';
 import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/favourite_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_backdrop_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
@@ -75,4 +76,10 @@ Future initDependencies() async {
   getItInstance.registerFactory(() => VideosBloc(getVideos: getItInstance()));
   getItInstance
       .registerFactory(() => SearchBloc(getSearchedMovies: getItInstance()));
+  getItInstance.registerFactory(() => FavouriteBloc(
+      getFavouriteMovies: getItInstance(),
+      deleteFavouriteMovie: getItInstance(),
+      checkIfFavouriteMovie: getItInstance(),
+      saveMovie: getItInstance()  
+  ));
 }
