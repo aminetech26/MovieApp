@@ -25,8 +25,12 @@ mixin _$MoviesResultModel {
   int? get totalPages => throw _privateConstructorUsedError;
   int? get totalResults => throw _privateConstructorUsedError;
 
+  /// Serializes this MoviesResultModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MoviesResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MoviesResultModelCopyWith<MoviesResultModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$MoviesResultModelCopyWithImpl<$Res, $Val extends MoviesResultModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MoviesResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$MoviesResultModelImplCopyWithImpl<$Res>
       $Res Function(_$MoviesResultModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoviesResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,12 +191,14 @@ class _$MoviesResultModelImpl implements _MoviesResultModel {
                 other.totalResults == totalResults));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, page,
       const DeepCollectionEquality().hash(_results), totalPages, totalResults);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoviesResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoviesResultModelImplCopyWith<_$MoviesResultModelImpl> get copyWith =>
@@ -221,8 +231,11 @@ abstract class _MoviesResultModel implements MoviesResultModel {
   int? get totalPages;
   @override
   int? get totalResults;
+
+  /// Create a copy of MoviesResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoviesResultModelImplCopyWith<_$MoviesResultModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

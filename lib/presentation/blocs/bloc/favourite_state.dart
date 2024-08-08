@@ -32,7 +32,7 @@ class FavouriteLoadingError extends FavouriteState {
 class IsMovieFavourite extends FavouriteState {
   final bool isFavourite;
 
-  const IsMovieFavourite(this.isFavourite);
+  const IsMovieFavourite({this.isFavourite = false});
 
   @override
   List<Object> get props => [isFavourite];

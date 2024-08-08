@@ -1,6 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:state_management/data/models/movie_model.dart';
 
+part 'movie_table.g.dart';
+
 @HiveType(typeId: 0)
 class MovieTable {
   @HiveField(0)

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:state_management/data/models/movie_details_model.dart';
 import 'package:state_management/domain/entities/movie_entity.dart';
 
 part 'movie_model.freezed.dart';
@@ -26,4 +27,24 @@ class MovieModel extends MovieEntity with _$MovieModel {
 
   factory MovieModel.fromJson(Map<String, dynamic> json) =>
       _$MovieModelFromJson(json);
+
+  factory MovieModel.fromMovieDetailModel(MovieDetailsModel movieModel) {
+      return MovieModel(
+        backdropPath: movieModel.backdropPath,
+        id: movieModel.id,
+        title: movieModel.title,
+        originalTitle: movieModel.originalTitle,
+        overview: movieModel.overview,
+        posterPath: movieModel.posterPath,
+        mediaType: null,
+        adult: movieModel.adult,
+        originalLanguage: movieModel.originalLanguage,
+        genreIds: movieModel.genres!.map((e) => e.id!).toList(),
+        popularity: movieModel.popularity,
+        releaseDate: movieModel.releaseDate,
+        video: movieModel.video,
+        voteAverage: movieModel.voteAverage,
+        voteCount: movieModel.voteCount,
+      );
+    }
 }

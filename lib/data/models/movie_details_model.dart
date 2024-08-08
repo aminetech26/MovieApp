@@ -3,7 +3,6 @@ import 'package:state_management/data/models/genres_model.dart';
 import 'package:state_management/data/models/production_companies.dart';
 import 'package:state_management/data/models/production_countries.dart';
 import 'package:state_management/data/models/spoken_languages.dart';
-import 'package:state_management/domain/entities/movie_detail_entity.dart';
 
 part 'movie_details_model.freezed.dart';
 part 'movie_details_model.g.dart';

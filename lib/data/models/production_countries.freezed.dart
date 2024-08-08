@@ -23,8 +23,12 @@ mixin _$ProductionCountries {
   String? get iso31661 => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductionCountries to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductionCountries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductionCountriesCopyWith<ProductionCountries> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$ProductionCountriesCopyWithImpl<$Res, $Val extends ProductionCountries>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductionCountries
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$ProductionCountriesImplCopyWithImpl<$Res>
       $Res Function(_$ProductionCountriesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductionCountries
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,11 +141,13 @@ class _$ProductionCountriesImpl implements _ProductionCountries {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, iso31661, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductionCountries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductionCountriesImplCopyWith<_$ProductionCountriesImpl> get copyWith =>
@@ -164,8 +174,11 @@ abstract class _ProductionCountries implements ProductionCountries {
   String? get iso31661;
   @override
   String? get name;
+
+  /// Create a copy of ProductionCountries
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductionCountriesImplCopyWith<_$ProductionCountriesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

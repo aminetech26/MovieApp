@@ -23,8 +23,12 @@ mixin _$Genres {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this Genres to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Genres
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GenresCopyWith<Genres> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$GenresCopyWithImpl<$Res, $Val extends Genres>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Genres
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$GenresImplCopyWithImpl<$Res>
       _$GenresImpl _value, $Res Function(_$GenresImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Genres
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,11 +137,13 @@ class _$GenresImpl implements _Genres {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Genres
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GenresImplCopyWith<_$GenresImpl> get copyWith =>
@@ -157,8 +167,11 @@ abstract class _Genres implements Genres {
   int? get id;
   @override
   String? get name;
+
+  /// Create a copy of Genres
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GenresImplCopyWith<_$GenresImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,8 +23,12 @@ mixin _$SpokenLanguages {
   String? get iso31661 => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this SpokenLanguages to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpokenLanguages
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SpokenLanguagesCopyWith<SpokenLanguages> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$SpokenLanguagesCopyWithImpl<$Res, $Val extends SpokenLanguages>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SpokenLanguages
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$SpokenLanguagesImplCopyWithImpl<$Res>
       _$SpokenLanguagesImpl _value, $Res Function(_$SpokenLanguagesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpokenLanguages
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,11 +141,13 @@ class _$SpokenLanguagesImpl implements _SpokenLanguages {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, iso31661, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpokenLanguages
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SpokenLanguagesImplCopyWith<_$SpokenLanguagesImpl> get copyWith =>
@@ -164,8 +174,11 @@ abstract class _SpokenLanguages implements SpokenLanguages {
   String? get iso31661;
   @override
   String? get name;
+
+  /// Create a copy of SpokenLanguages
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SpokenLanguagesImplCopyWith<_$SpokenLanguagesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

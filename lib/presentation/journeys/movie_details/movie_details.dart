@@ -1,16 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:state_management/common/constants/translation_constants.dart';
+import 'package:state_management/data/models/movie_model.dart';
 import 'package:state_management/di/get_it.dart';
 import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/blocs/bloc/crew_bloc.dart';
+import 'package:state_management/presentation/blocs/bloc/favourite_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_details_bloc.dart';
 import 'package:state_management/presentation/blocs/bloc/videos_bloc.dart';
 import 'package:state_management/presentation/journeys/movie_details/big_poster.dart';
 import 'package:state_management/presentation/journeys/movie_details/cast_widget.dart';
-
 import 'package:state_management/presentation/journeys/movie_details/movie_details_arguments.dart';
 import 'package:state_management/presentation/journeys/movie_details/videos_widget.dart';
 import 'package:state_management/presentation/themes/text_theme.dart';
@@ -31,6 +31,7 @@ class _MovieDetailsState extends State<MovieDetails> {
   late MovieDetailsBloc movieDetailsBloc;
   late CrewBloc crewBloc;
   late VideosBloc videosBloc;
+  late FavouriteBloc favouriteBloc;
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     movieDetailsBloc = getItInstance<MovieDetailsBloc>();
     crewBloc = movieDetailsBloc.crewBloc;
     videosBloc = movieDetailsBloc.videosBloc;
+    favouriteBloc = movieDetailsBloc.favouriteBloc;
     movieDetailsBloc
         .add(MovieDetailsLoad(movieId: widget.movieDetailArguments.movieId));
   }
@@ -48,6 +50,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     movieDetailsBloc.close();
     crewBloc.close();
     videosBloc.close();
+    favouriteBloc.close();
   }
 
   @override
@@ -64,6 +67,9 @@ class _MovieDetailsState extends State<MovieDetails> {
           BlocProvider(
             create: (context) => videosBloc,
           ),
+          BlocProvider(
+            create: (context) => favouriteBloc,
+          ),
         ],
         child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
           builder: (context, state) {
@@ -75,7 +81,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     BigPoster(
-                      movie: movieDetail,
+                      movie:  MovieModel.fromMovieDetailModel(movieDetail),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(

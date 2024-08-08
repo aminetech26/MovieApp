@@ -23,8 +23,12 @@ mixin _$VideoResultModel {
   int get id => throw _privateConstructorUsedError;
   List<VideoModel> get results => throw _privateConstructorUsedError;
 
+  /// Serializes this VideoResultModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VideoResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VideoResultModelCopyWith<VideoResultModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$VideoResultModelCopyWithImpl<$Res, $Val extends VideoResultModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VideoResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$VideoResultModelImplCopyWithImpl<$Res>
       $Res Function(_$VideoResultModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VideoResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,12 +147,14 @@ class _$VideoResultModelImpl implements _VideoResultModel {
             const DeepCollectionEquality().equals(other._results, _results));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, const DeepCollectionEquality().hash(_results));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VideoResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VideoResultModelImplCopyWith<_$VideoResultModelImpl> get copyWith =>
@@ -171,8 +181,11 @@ abstract class _VideoResultModel implements VideoResultModel {
   int get id;
   @override
   List<VideoModel> get results;
+
+  /// Create a copy of VideoResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VideoResultModelImplCopyWith<_$VideoResultModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:state_management/common/extensions/num_extensions.dart';
 import 'package:state_management/data/core/api_constants.dart';
-
-import 'package:state_management/data/models/movie_details_model.dart';
+import 'package:state_management/data/models/movie_model.dart';
 import 'package:state_management/presentation/journeys/movie_details/movie_detail_app_bar.dart';
 import 'package:state_management/presentation/themes/text_theme.dart';
 
 class BigPoster extends StatelessWidget {
-  final MovieDetailsModel movie;
+  final MovieModel movie;
 
   const BigPoster({
     super.key,
@@ -60,7 +59,7 @@ class BigPoster extends StatelessWidget {
           left: 16.w,
           right: 16.w,
           top: MediaQuery.of(context).viewPadding.top + 4.h,
-          child: const MovieDetailAppBar(),
+          child: MovieDetailAppBar(movie: movie),
         ),
       ],
     );

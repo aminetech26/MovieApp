@@ -11,13 +11,13 @@ abstract class MovieLocalDataSource {
 class MovieLocalDataSourceImpl extends MovieLocalDataSource {
   @override
   Future<void> cacheMovies(MovieTable movie) async {
-    final movieBox = Hive.box<MovieTable>('movieBox');
+    final movieBox = await Hive.openBox<MovieTable>('movieBox');
     movieBox.put(movie.id, movie);
   }
 
   @override
-  Future<void> deleteMovie(int movieId) {
-    final movieBox = Hive.box<MovieTable>('movieBox');
+  Future<void> deleteMovie(int movieId) async {
+    final movieBox = await Hive.openBox<MovieTable>('movieBox');
     movieBox.delete(movieId);
     return Future.value();
   }
@@ -36,7 +36,7 @@ class MovieLocalDataSourceImpl extends MovieLocalDataSource {
 
   @override
   Future<bool> isMovieFavourite(int movieId) async {
-    final movieBox = Hive.box<MovieTable>('movieBox');
+    final movieBox = await Hive.openBox<MovieTable>('movieBox');
     return movieBox.containsKey(movieId);
   }
 }

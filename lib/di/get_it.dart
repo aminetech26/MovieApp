@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:state_management/data/core/api_client.dart';
+import 'package:state_management/data/data_sources/movie_local_data_source.dart';
 import 'package:state_management/data/data_sources/movie_remote_data_source.dart';
 import 'package:state_management/data/repositories/movies_repository_imp.dart';
 import 'package:state_management/domain/repositories/movies_repository.dart';
@@ -36,8 +37,10 @@ Future initDependencies() async {
       () => MoviesRepositoryImp(getItInstance(), getItInstance()));
   getItInstance.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(getItInstance()));
-  getItInstance
-      .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
+  getItInstance.registerLazySingleton<MovieLocalDataSource>(
+      () => MovieLocalDataSourceImpl());
+  getItInstance.registerLazySingleton<GetTrending>(
+      () => GetTrending(getItInstance()));
   getItInstance.registerLazySingleton<GetFavouriteMovies>(
       () => GetFavouriteMovies(getItInstance()));
   getItInstance.registerLazySingleton<DeleteFavouriteMovie>(
@@ -69,6 +72,7 @@ Future initDependencies() async {
       getPlayingNow: getItInstance()));
   getItInstance.registerFactory(() => LanguageBloc());
   getItInstance.registerFactory(() => MovieDetailsBloc(
+      favouriteBloc: getItInstance(),
       getMovieDetails: getItInstance(),
       crewBloc: getItInstance(),
       videosBloc: getItInstance()));
@@ -80,6 +84,5 @@ Future initDependencies() async {
       getFavouriteMovies: getItInstance(),
       deleteFavouriteMovie: getItInstance(),
       checkIfFavouriteMovie: getItInstance(),
-      saveMovie: getItInstance()  
-  ));
+      saveMovie: getItInstance()));
 }

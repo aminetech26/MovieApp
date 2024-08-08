@@ -32,29 +32,27 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
         } else {
           await saveMovie(event.movie);
         }
-        final isFavourite = await checkIfFavouriteMovie(MovieParams(movieId: event.movie.id!));
+        final isFavourite =
+            await checkIfFavouriteMovie(MovieParams(movieId: event.movie.id!));
         isFavourite.fold((l) => emit(FavouriteLoadingError(l.errorType)),
-            (r) => emit(IsMovieFavourite(r)));
-      }
-
-      else if(event is LoadFavouriteMovies){
+            (r) => emit(IsMovieFavourite(isFavourite: r)));
+      } else if (event is LoadFavouriteMovies) {
         emit(FavouriteLoading());
         final movies = await getFavouriteMovies(NoParams());
         movies.fold((l) => emit(FavouriteLoadingError(l.errorType)),
             (r) => emit(FavouriteLoaded(r)));
-
-      } else if(event is CheckIfFavouriteMovieEvent){
-        final isFavourite = await checkIfFavouriteMovie(MovieParams(movieId: event.movieId));
+      } else if (event is CheckIfFavouriteMovieEvent) {
+        final isFavourite =
+            await checkIfFavouriteMovie(MovieParams(movieId: event.movieId));
         isFavourite.fold((l) => emit(FavouriteLoadingError(l.errorType)),
-            (r) => emit(IsMovieFavourite(r)));
-      }
-      else if(event is DeleteFavouriteMovieEvent){
+            (r) => emit(IsMovieFavourite(isFavourite: r)));
+      } else if (event is DeleteFavouriteMovieEvent) {
         await deleteFavouriteMovie(MovieParams(movieId: event.movieId));
-        final isFavourite = await checkIfFavouriteMovie(MovieParams(movieId: event.movieId));
+        final isFavourite =
+            await checkIfFavouriteMovie(MovieParams(movieId: event.movieId));
         isFavourite.fold((l) => emit(FavouriteLoadingError(l.errorType)),
-            (r) => emit(IsMovieFavourite(r)));
+            (r) => emit(IsMovieFavourite(isFavourite: r)));
       }
-    }
-    );
+    });
   }
 }

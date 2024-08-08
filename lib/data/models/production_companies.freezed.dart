@@ -25,8 +25,12 @@ mixin _$ProductionCompanies {
   String? get name => throw _privateConstructorUsedError;
   String? get originCountry => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductionCompanies to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductionCompanies
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductionCompaniesCopyWith<ProductionCompanies> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$ProductionCompaniesCopyWithImpl<$Res, $Val extends ProductionCompanies>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductionCompanies
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$ProductionCompaniesImplCopyWithImpl<$Res>
       $Res Function(_$ProductionCompaniesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductionCompanies
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,12 +174,14 @@ class _$ProductionCompaniesImpl implements _ProductionCompanies {
                 other.originCountry == originCountry));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, logoPath, name, originCountry);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductionCompanies
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductionCompaniesImplCopyWith<_$ProductionCompaniesImpl> get copyWith =>
@@ -204,8 +214,11 @@ abstract class _ProductionCompanies implements ProductionCompanies {
   String? get name;
   @override
   String? get originCountry;
+
+  /// Create a copy of ProductionCompanies
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductionCompaniesImplCopyWith<_$ProductionCompaniesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
