@@ -16,12 +16,11 @@ class FavoriteMovieGrid extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: GridView.builder(
-        
         shrinkWrap: true,
         itemCount: movies.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.9,
+          childAspectRatio: 0.75,
           crossAxisSpacing: 8.w,
         ),
         itemBuilder: (context, index) {

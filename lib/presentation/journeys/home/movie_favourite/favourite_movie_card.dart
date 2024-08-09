@@ -37,6 +37,7 @@ class FavouriteMovieCard extends StatelessWidget {
                 imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
                 fit: BoxFit.fitWidth,
                 width: 145.h,
+                height: 200.h,
               ),
               Positioned(
                 right: 10.w,
