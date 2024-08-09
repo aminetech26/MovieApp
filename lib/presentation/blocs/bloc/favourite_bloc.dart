@@ -50,8 +50,12 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
         await deleteFavouriteMovie(MovieParams(movieId: event.movieId));
         final isFavourite =
             await checkIfFavouriteMovie(MovieParams(movieId: event.movieId));
-        isFavourite.fold((l) => emit(FavouriteLoadingError(l.errorType)),
-            (r) => emit(IsMovieFavourite(isFavourite: r)));
+        final movies = await getFavouriteMovies(NoParams());
+        isFavourite.fold((l) => emit(FavouriteLoadingError(l.errorType)), (r) {
+          movies.fold((l) => FavouriteLoadingError(l.errorType), (movies) {
+            emit(FavouriteLoaded(movies));
+          });
+        });
       }
     });
   }

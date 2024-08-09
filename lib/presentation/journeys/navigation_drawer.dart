@@ -5,6 +5,7 @@ import 'package:state_management/common/constants/languages.dart';
 import 'package:state_management/common/constants/translation_constants.dart';
 import 'package:state_management/presentation/app_localizations.dart';
 import 'package:state_management/presentation/blocs/bloc/language_bloc.dart';
+import 'package:state_management/presentation/journeys/home/movie_favourite/movie_favourite.dart';
 import 'package:state_management/presentation/journeys/navigation_expanded_list_item.dart';
 import 'package:state_management/presentation/journeys/navigation_list_item.dart';
 import 'package:state_management/presentation/widgets/app_dialog.dart';
@@ -40,7 +41,12 @@ class NavigationDrawer extends StatelessWidget {
             NavigationListItem(
                 title: AppLocalizations.of(context)
                     .translate(TranslationConstants.favouriteMovies),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MovieFavouriteScreen(),
+                  ));
+                }),
             NavigationExpandedListItem(
                 title: 'Languages',
                 onPressed: (index) {

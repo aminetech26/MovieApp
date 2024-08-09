@@ -37,3 +37,12 @@ class IsMovieFavourite extends FavouriteState {
   @override
   List<Object> get props => [isFavourite];
 }
+
+class FavouriteMovieDeleted extends FavouriteState {
+  final int movieId;
+
+  const FavouriteMovieDeleted(this.movieId);
+
+  @override
+  List<Object> get props => [movieId];
+}
