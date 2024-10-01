@@ -7,7 +7,6 @@ import 'package:state_management/domain/entities/no_params.dart';
 import 'package:state_management/domain/usecases/get_coming_soon.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
-import 'package:state_management/domain/usecases/get_trending.dart';
 
 part 'movie_tabbed_event.dart';
 part 'movie_tabbed_state.dart';
