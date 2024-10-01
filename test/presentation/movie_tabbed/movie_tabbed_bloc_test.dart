@@ -1,9 +1,9 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:state_management/presentation/blocs/bloc/movie_tabbed_bloc.dart';
 import 'package:state_management/domain/usecases/get_coming_soon.dart';
 import 'package:state_management/domain/usecases/get_playing_now.dart';
 import 'package:state_management/domain/usecases/get_popular.dart';
-import 'package:test/test.dart';
 
 class GetPopularMock extends Mock implements GetPopular {}
 
